@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tortex Pay - Premium Gateway</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{--bg:#f3f5fa;--bg2:#e3e9f7;--card:rgba(255,255,255,.85);--bd:rgba(0,0,0,.08);--tx:#0b0f1a;--mu:#5b6478;--pr:#2563EB;--ok:#10B981;--er:#EF4444;--in:rgba(0,0,0,.05)}
+[data-theme=dark]{--bg:#050505;--bg2:#0f172a;--card:rgba(255,255,255,.06);--bd:rgba(255,255,255,.1);--tx:#f4f6fb;--mu:#98a2b8;--in:rgba(255,255,255,.08)}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{min-height:100%}
+body{font-family:Inter,system-ui,sans-serif;color:var(--tx);background:radial-gradient(1000px 600px at 50% -20%,var(--bg2),var(--bg));background-attachment:fixed;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+#wrap{max-width:480px;margin:0 auto;padding:0 16px 90px}
+header{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+#logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;cursor:pointer;user-select:none; letter-spacing:-0.5px;}
+#logo i{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg, var(--pr), #4f46e5);color:#fff;display:grid;place-items:center;font-size:15px; box-shadow: 0 4px 12px rgba(37,99,235,.4);}
+.hb{display:flex;gap:8px}
+.ib{width:38px;height:38px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer;backdrop-filter:blur(14px); transition: 0.2s;}
+.ib:hover{border-color:var(--pr); color:var(--pr);}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:24px;padding:20px;margin-bottom:16px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:transform .3s,border-color .3s; box-shadow: 0 8px 24px rgba(0,0,0,0.04);}
+.card:hover{transform:translateY(-2px);border-color:var(--pr)}
+h2{font-size:22px;margin:6px 0 14px; letter-spacing: -0.5px;}h3{font-size:16px;margin-bottom:12px; font-weight:600;}
+.mu{color:var(--mu);font-size:13px}
+.bal{font-size:42px;font-weight:800;letter-spacing:-1.5px;margin:4px 0 2px; background: linear-gradient(to right, var(--tx), var(--mu)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid .card{margin:0; border-radius: 20px; padding: 16px;}
+.stat b{display:block;font-size:24px;margin-top:4px; font-weight: 700;}
+label{display:block;font-size:13px;color:var(--mu);margin:14px 0 6px; font-weight: 500;}
+input{width:100%;padding:14px 16px;border-radius:16px;border:1px solid var(--bd);background:var(--in);color:var(--tx);font:inherit;outline:none; transition: 0.2s;}
+input:focus{border-color:var(--pr);box-shadow:0 0 0 4px rgba(37,99,235,.15); background: transparent;}
+.btn{width:100%;margin-top:18px;padding:15px;border:0;border-radius:16px;background:var(--pr);color:#fff;font:600 15px Inter,sans-serif;cursor:pointer;display:flex;gap:8px;align-items:center;justify-content:center;transition:filter .2s,transform .1s; box-shadow: 0 4px 12px rgba(37,99,235,.25);}
+.btn:hover{filter:brightness(1.1)}.btn:active{transform:scale(.97)}.btn:disabled{opacity:.6;cursor:wait; box-shadow: none;}
+.btn.g{background:var(--ok); box-shadow: 0 4px 12px rgba(16,185,129,.25);}.btn.r{background:var(--er); box-shadow: 0 4px 12px rgba(239,68,68,.25);}.btn.o{background:var(--in);color:var(--tx);border:1px solid var(--bd); box-shadow: none;}
+.sm{width:auto;margin:0;padding:8px 14px;font-size:13px;border-radius:12px;display:inline-flex;}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 0;border-bottom:1px solid var(--bd)}
+.row:last-child{border:0}
+.tag{font-size:11px;padding:4px 10px;border-radius:99px;font-weight:700; letter-spacing: 0.3px;}
+.t-ok{background:rgba(16,185,129,.15);color:var(--ok);border:1px solid rgba(16,185,129,.3);}.t-er{background:rgba(239,68,68,.15);color:var(--er);border:1px solid rgba(239,68,68,.3);}.t-pr{background:rgba(37,99,235,.15);color:#6c9bff;border:1px solid rgba(37,99,235,.3);}
+.qr{display:block;margin:15px auto;border-radius:20px;background:#fff;padding:12px;width:220px;height:220px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);}
+.upi{display:flex;justify-content:space-between;align-items:center;background:var(--in);border-radius:16px;padding:14px 16px;font-weight:600;gap:8px; border: 1px dashed var(--bd);}
+.msg{padding:14px 16px;border-radius:14px;font-size:14px;margin-top:14px; font-weight: 500; display: flex; align-items: center; gap: 8px;}
+.msg.ok{background:rgba(16,185,129,.1);color:var(--ok);border:1px solid rgba(16,185,129,.2);}.msg.err{background:rgba(239,68,68,.1);color:var(--er);border:1px solid rgba(239,68,68,.2);}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;padding:0 12px calc(12px + env(safe-area-inset-bottom))}
+nav div{display:flex;width:100%;max-width:456px;background:var(--card);border:1px solid var(--bd);border-radius:20px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);overflow:hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.15);}
+nav button{flex:1;padding:14px 4px;border:0;background:none;color:var(--mu);font:600 12px Inter,sans-serif;cursor:pointer;display:grid;gap:6px;justify-items:center; transition: 0.2s;}
+nav button i{font-size:18px}nav button.on{color:var(--pr)}
+.tabs{display:flex;gap:8px;overflow-x:auto;margin-bottom:18px;padding-bottom:4px; scrollbar-width: none;}
+.tabs button{flex:none;padding:10px 18px;border-radius:99px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:600 13px Inter,sans-serif;cursor:pointer; transition: 0.2s;}
+.tabs button.on{background:var(--pr);border-color:var(--pr);color:#fff; box-shadow: 0 4px 12px rgba(37,99,235,.3);}
+.sp{width:18px;height:18px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:s .7s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation-duration:.01ms!important}}
+#toast{position:fixed;top:calc(16px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:99;padding:14px 24px;border-radius:16px;color:#fff;font-weight:600;font-size:14px;display:none;max-width:90%; box-shadow: 0 10px 30px rgba(0,0,0,0.2); backdrop-filter: blur(10px);}
+pre{white-space:pre-wrap;word-break:break-all;font-size:12px;background:var(--in);padding:12px;border-radius:12px;margin-top:12px; border: 1px solid var(--bd);}
+</style>
+</head>
+<body>
+<div id="toast"></div>
+<div id="wrap">
+  <header>
+    <div id="logo" onclick="logoTap()"><i class="fa-solid fa-bolt"></i><span>Tortex Pay</span></div>
+    <div class="hb"><button class="ib" onclick="toggleTheme()" aria-label="Toggle theme"><i class="fa-solid fa-circle-half-stroke"></i></button><button class="ib" id="lo" onclick="logout()" aria-label="Log out" style="display:none"><i class="fa-solid fa-right-from-bracket"></i></button></div>
+  </header>
+  <main id="app"></main>
+</div>
+<nav id="nav"></nav>
+
+<script>
+const KEY='fpg_v2', $=s=>document.querySelector(s);
+const DEF={users:[],withdrawals:[],usedUtr:[],session:null,admin:false,theme:'dark',
+  settings:{upi_id:'sumit730@fam',api_key:'FAMAPPAPI',gateway_url:'https://my-pro-beta-three.vercel.app/api',admin_pass:'admin123'}};
+let DB;
+try{DB=Object.assign({},DEF,JSON.parse(localStorage.getItem(KEY)||'{}'));DB.settings=Object.assign({},DEF.settings,DB.settings)}catch(e){DB=JSON.parse(JSON.stringify(DEF))}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(DB))}catch(e){}};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const inr=n=>'₹'+Number(n).toFixed(2);
+const now=()=>new Date().toLocaleString('en-IN',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
+const me=()=>DB.users.find(u=>u.phone===DB.session);
+let view='home', dep=null, taps=0, tapT;
+
+function toast(m,ok){const t=$('#toast');t.innerHTML=(ok?'<i class="fa-solid fa-circle-check"></i> ':'<i class="fa-solid fa-circle-exclamation"></i> ')+esc(m);t.style.background=ok?'var(--ok)':'var(--er)';t.style.display='block';clearTimeout(t._t);t._t=setTimeout(()=>t.style.display='none',3000)}
+function toggleTheme(){DB.theme=DB.theme==='dark'?'light':'dark';save();document.documentElement.dataset.theme=DB.theme}
+function go(v){view=v;box='';render()}
+function logoTap(){taps++;clearTimeout(tapT);tapT=setTimeout(()=>taps=0,1500);if(taps>=5){taps=0;go(DB.admin?'a-dash':'a-login')}}
+function logout(){DB.session=null;DB.admin=false;save();dep=null;go('home')}
+
+/* ---------- AUTH ---------- */
+function login(){
+  const name=$('#n').value.trim(),phone=$('#p').value.trim(),email=$('#e').value.trim();
+  if(name.length<2)return toast('Enter your name');
+  if(!/^\d{10}$/.test(phone))return toast('Enter a 10-digit phone number');
+  if(!/^\S+@\S+\.\S+$/.test(email))return toast('Enter a valid email');
+  let u=DB.users.find(x=>x.phone===phone);
+  if(!u){u={name,phone,email,balance:0,history:[]};DB.users.push(u)}
+  DB.session=phone;save();toast('Welcome back, '+u.name,true);go('home')
+}
+
+/* ---------- DEPOSIT & FAMPAY VERIFY ---------- */
+function genQR(){
+  const a=parseFloat($('#amt').value);
+  if(!(a>=10))return toast('Minimum deposit is ₹10');
+  dep={amt:Math.round(a*100)/100};render()
+}
+function copy(t){navigator.clipboard&&navigator.clipboard.writeText(t).then(()=>toast('Copied to clipboard',true),()=>{})}
+async function verify(){
+  const utr=$('#utr').value.trim(),u=me(),s=DB.settings;
+  if(!/^\d{12}$/.test(utr))return msg('Enter the 12-digit UTR from your payment app','err');
+  if(DB.usedUtr.includes(utr))return msg('This UTR was already used','err');
+  
+  const b=$('#vb');b.disabled=true;b.innerHTML='<span class="sp"></span> Verifying with Tortex API...';
+  
+  try{
+    // Tera Vercel Gateway URL
+    const url = s.gateway_url+(s.gateway_url.includes('?')?'&':'?')+'api_key='+encodeURIComponent(s.api_key)+'&utr='+utr+'&amount='+dep.amt;
+    const r=await fetch(url);
+    const j=await r.json();
+    
+    if(j.status==='success'){
+      if(DB.usedUtr.includes(utr))throw new Error('This UTR was already used');
+      u.balance=Math.round((u.balance+dep.amt)*100)/100;
+      u.history.push({type:'deposit',amount:dep.amt,utr,date:now()});
+      DB.usedUtr.push(utr);save();
+      const a=dep.amt;dep=null;view='home';render();toast(inr(a)+' added to your wallet successfully!',true);return
+    }
+    msg(j.message||j.error||'Payment not found. Check the UTR and try again.','err')
+  }catch(e){msg('Gateway Error: '+e.message,'err')}
+  
+  b.disabled=false;b.innerHTML='<i class="fa-solid fa-shield-check"></i> Verify payment'
+}
+function msg(t,c){const m=$('#mm');if(m)m.innerHTML='<div class="msg '+c+'"><i class="fa-solid fa-'+(c==='ok'?'check-circle':'circle-exclamation')+'"></i> '+esc(t)+'</div>'}
+
+/* ---------- WITHDRAW ---------- */
+function withdraw(){
+  const u=me(),a=parseFloat($('#wa').value),upi=$('#wu').value.trim();
+  if(!(a>=50))return msg('Minimum withdrawal is ₹50','err');
+  if(a>u.balance)return msg('Not enough balance','err');
+  if(!/^[\w.\-]{2,}@[\w]{2,}$/.test(upi))return msg('Enter a valid UPI ID, like name@bank','err');
+  u.balance=Math.round((u.balance-a)*100)/100;
+  const w={id:Date.now(),phone:u.phone,name:u.name,amount:a,upi,status:'pending',date:now()};
+  DB.withdrawals.push(w);u.history.push({type:'withdraw',amount:a,upi,wid:w.id,date:now()});
+  save();view='home';render();toast('Withdrawal request sent to Admin',true)
+}
+const wstat=id=>{const w=DB.withdrawals.find(x=>x.id===id);return w?w.status:'pending'};
+const tagOf=s=>s==='paid'?'<span class="tag t-ok">Paid</span>':s==='rejected'?'<span class="tag t-er">Rejected</span>':'<span class="tag t-pr">Pending</span>';
+
+/* ---------- ADMIN PANEL ---------- */
+function adminLogin(){
+  if($('#ap').value===DB.settings.admin_pass){DB.admin=true;save();go('a-dash')}else toast('Wrong password')
+}
+function adj(phone,sign){
+  const u=DB.users.find(x=>x.phone===phone),a=parseFloat(prompt((sign>0?'Add to ':'Deduct from ')+u.name+' (amount in ₹):'));
+  if(!(a>0))return;
+  if(sign<0&&a>u.balance)return toast('Amount is more than the balance');
+  u.balance=Math.round((u.balance+sign*a)*100)/100;
+  u.history.push({type:sign>0?'admin_add':'admin_deduct',amount:a,date:now()});save();render();toast('Balance updated',true)
+}
+function wact(id,st){
+  const w=DB.withdrawals.find(x=>x.id===id);if(!w||w.status!=='pending')return;
+  if(st==='rejected'){const u=DB.users.find(x=>x.phone===w.phone);if(u)u.balance=Math.round((u.balance+w.amount)*100)/100}
+  w.status=st;save();render();toast(st==='paid'?'Marked as paid':'Rejected and refunded',true)
+}
+function saveSet(){
+  const s=DB.settings,v=id=>$(id).value.trim();
+  if(!v('#s1')||!v('#s2')||!v('#s3'))return toast('UPI ID, API key and URL are required');
+  s.upi_id=v('#s1');s.api_key=v('#s2');s.gateway_url=v('#s3');
+  if(v('#s4'))s.admin_pass=v('#s4');
+  save();toast('Settings saved successfully',true);render()
+}
+async function testGw(){
+  const s=DB.settings,o=$('#gw');o.innerHTML='<div class="msg ok"><span class="sp"></span> Checking Tortex Gateway...</div>';
+  try{
+    const t0=Date.now(),url=s.gateway_url+(s.gateway_url.includes('?')?'&':'?')+'api_key='+encodeURIComponent(s.api_key)+'&utr=000000000000&amount=1';
+    const r=await fetch(url),txt=await r.text();let j;
+    try{j=JSON.parse(txt)}catch(e){o.innerHTML='<div class="msg err">Gateway answered (HTTP '+r.status+') but not with JSON.</div><pre>'+esc(txt.slice(0,200))+'</pre>';return}
+    o.innerHTML='<div class="msg ok">Gateway is live and returns valid JSON ('+(Date.now()-t0)+' ms, HTTP '+r.status+').</div><pre>'+esc(JSON.stringify(j))+'</pre>'
+  }catch(e){o.innerHTML='<div class="msg err">Cannot reach the gateway: '+esc(e.message)+'. Check the URL, and that the API allows browser requests (CORS).</div>'}
+}
+
+/* ---------- RENDER ---------- */
+function histRows(list,empty){
+  if(!list.length)return '<p class="mu" style="padding:8px 0">'+empty+'</p>';
+  return list.slice().reverse().slice(0,15).map(h=>{
+    const plus=h.type==='deposit'||h.type==='admin_add',nm={deposit:'Deposit',withdraw:'Withdrawal',admin_add:'Added by admin',admin_deduct:'Deducted by admin'}[h.type];
+    return '<div class="row"><div><b style="font-size:14px">'+nm+'</b><div class="mu">'+esc(h.date)+(h.utr?' · UTR '+esc(h.utr):'')+(h.upi?' · '+esc(h.upi):'')+'</div></div><div style="text-align:right"><b style="color:var(--'+(plus?'ok':'er')+')">'+(plus?'+':'-')+inr(h.amount)+'</b>'+(h.type==='withdraw'?'<div style="margin-top:4px">'+tagOf(wstat(h.wid))+'</div>':'')+'</div></div>'
+  }).join('')
+}
+function render(){
+  document.documentElement.dataset.theme=DB.theme;
+  const app=$('#app'),nav=$('#nav'),u=me(),isA=view.startsWith('a-');
+  $('#lo').style.display=(u||DB.admin)?'':'none';
+  nav.innerHTML='';
+  if(isA){
+    if(view==='a-login'){app.innerHTML='<div class="card"><h2>Admin Login</h2><p class="mu">Enter your master password to access the dashboard.</p><label>Password</label><input id="ap" type="password" autocomplete="off"><button class="btn" onclick="adminLogin()">Unlock Dashboard</button><button class="btn o" onclick="go(\'home\')">Back to App</button></div>';return}
+    if(!DB.admin){go('a-login');return}
+    const tabs=[['a-dash','Dashboard'],['a-users','Users'],['a-wd','Withdrawals'],['a-set','Settings']];
+    let h='<div class="tabs">'+tabs.map(t=>'<button class="'+(view===t[0]?'on':'')+'" onclick="go(\''+t[0]+'\')">'+t[1]+'</button>').join('')+'<button onclick="go(\'home\')" style="color:var(--er)">Exit</button></div>';
+    const pend=DB.withdrawals.filter(w=>w.status==='pending');
+    if(view==='a-dash'){
+      const td=DB.users.reduce((s,x)=>s+x.history.filter(y=>y.type==='deposit').reduce((a,y)=>a+y.amount,0),0),tb=DB.users.reduce((s,x)=>s+x.balance,0);
+      h+='<div class="grid"><div class="card stat"><span class="mu">Total Users</span><b>'+DB.users.length+'</b></div><div class="card stat"><span class="mu">Deposits</span><b>'+inr(td)+'</b></div><div class="card stat"><span class="mu">Pending Withdraw</span><b>'+pend.length+'</b></div><div class="card stat"><span class="mu">App Balance</span><b>'+inr(tb)+'</b></div></div>'
+    }else if(view==='a-users'){
+      h+='<div class="card"><h3>Registered Users</h3>'+(DB.users.length?DB.users.map(x=>'<div class="row"><div><b style="font-size:14px">'+esc(x.name)+'</b><div class="mu">'+esc(x.phone)+' · '+inr(x.balance)+'</div></div><div style="display:flex;gap:6px"><button class="btn g sm" onclick="adj(\''+esc(x.phone)+'\',1)"><i class="fa-solid fa-plus"></i></button><button class="btn r sm" onclick="adj(\''+esc(x.phone)+'\',-1)"><i class="fa-solid fa-minus"></i></button></div></div>').join(''):'<p class="mu">No users yet.</p>')+'</div>'
+    }else if(view==='a-wd'){
+      h+='<div class="card"><h3>Withdrawal Requests</h3>'+(DB.withdrawals.length?DB.withdrawals.slice().reverse().map(w=>'<div class="row"><div><b style="font-size:14px">'+inr(w.amount)+' · '+esc(w.name)+'</b><div class="mu">'+esc(w.phone)+' · '+esc(w.upi)+' · '+esc(w.date)+'</div></div>'+(w.status==='pending'?'<div style="display:flex;gap:6px"><button class="btn g sm" onclick="wact('+w.id+',\'paid\')"><i class="fa-solid fa-check"></i></button><button class="btn r sm" onclick="wact('+w.id+',\'rejected\')"><i class="fa-solid fa-xmark"></i></button></div>':tagOf(w.status))+'</div>').join(''):'<p class="mu">No withdrawal requests yet.</p>')+'</div>'
+    }else{
+      const s=DB.settings;
+      h+='<div class="card"><h3>Tortex Settings</h3><label>Deposit UPI ID</label><input id="s1" value="'+esc(s.upi_id)+'"><label>Tortex API Key</label><input id="s2" value="'+esc(s.api_key)+'"><label>Gateway URL</label><input id="s3" value="'+esc(s.gateway_url)+'"><label>New Admin Password (leave empty to keep)</label><input id="s4" type="password" autocomplete="new-password"><button class="btn" onclick="saveSet()">Save Settings</button></div><div class="card"><h3>Gateway Status</h3><p class="mu">Check if your Vercel API is responding correctly.</p><button class="btn o" onclick="testGw()"><i class="fa-solid fa-plug"></i> Test API Connection</button><div id="gw"></div></div>'
+    }
+    app.innerHTML=h;return
+  }
+  if(!u){app.innerHTML='<div class="card"><h2>Welcome to Tortex Pay</h2><p class="mu">Login or register to add funds and withdraw instantly.</p><label>Full Name</label><input id="n" autocomplete="name" placeholder="John Doe"><label>Phone Number</label><input id="p" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="9876543210"><label>Email Address</label><input id="e" type="email" autocomplete="email" placeholder="john@example.com"><button class="btn" onclick="login()">Continue to Wallet</button></div>';return}
+  nav.innerHTML='<div>'+[['home','fa-wallet','Wallet'],['deposit','fa-circle-plus','Deposit'],['withdraw','fa-arrow-up-from-bracket','Withdraw']].map(t=>'<button class="'+(view===t[0]?'on':'')+'" onclick="'+(t[0]==='deposit'?'dep=null;':'')+'go(\''+t[0]+'\')"><i class="fa-solid '+t[1]+'"></i>'+t[2]+'</button>').join('')+'</div>';
+  if(view==='deposit'){
+    const s=DB.settings;
+    if(!dep)app.innerHTML='<div class="card"><h2>Add Money</h2><label>Amount (minimum ₹10)</label><input id="amt" type="number" inputmode="decimal" min="10" placeholder="500"><button class="btn" onclick="genQR()">Generate Payment QR</button></div>';
+    else{
+      const link='upi://pay?pa='+s.upi_id+'&am='+dep.amt+'&cu=INR';
+      app.innerHTML='<div class="card"><h2>Pay '+inr(dep.amt)+'</h2><img class="qr" alt="UPI QR code" src="https://quickchart.io/qr?size=300&text='+encodeURIComponent(link)+'"><div class="upi"><span>'+esc(s.upi_id)+'</span><button class="btn o sm" onclick="copy(\''+esc(s.upi_id)+'\')"><i class="fa-regular fa-copy"></i> Copy</button></div><p class="mu" style="margin-top:10px">Pay exactly '+inr(dep.amt)+', then enter the 12-digit UTR from your payment app.</p><label>UTR / Transaction ID</label><input id="utr" inputmode="numeric" maxlength="12" placeholder="12 digits"><button class="btn g" id="vb" onclick="verify()"><i class="fa-solid fa-shield-check"></i> Verify Payment</button><div id="mm"></div><button class="btn o" onclick="dep=null;render()">Change Amount</button></div>'
+    }
+  }else if(view==='withdraw'){
+    app.innerHTML='<div class="card"><h2>Withdraw Funds</h2><p class="mu">Available: <b>'+inr(u.balance)+'</b> · Minimum ₹50</p><label>Amount to Withdraw</label><input id="wa" type="number" inputmode="decimal" placeholder="100"><label>Your UPI ID (for payout)</label><input id="wu" placeholder="name@bank" autocapitalize="off"><button class="btn" onclick="withdraw()">Request Withdrawal</button><div id="mm"></div></div>'
+  }else{
+    const td=u.history.filter(h=>h.type==='deposit').reduce((a,h)=>a+h.amount,0);
+    app.innerHTML='<div class="card"><span class="mu">Total Wallet Balance</span><div class="bal">'+inr(u.balance)+'</div><span class="mu">Hi, <b>'+esc(u.name)+'</b></span></div><div class="grid" style="margin-bottom:14px"><div class="card stat"><span class="mu">Total Deposited</span><b>'+inr(td)+'</b></div><div class="card stat"><span class="mu">Withdrawals</span><b>'+u.history.filter(h=>h.type==='withdraw').length+'</b></div></div><div class="card"><h3>Withdrawal History</h3>'+histRows(u.history.filter(h=>h.type==='withdraw'),'No withdrawals yet.')+'</div><div class="card"><h3>Recent Activity</h3>'+histRows(u.history,'Add money to get started.')+'</div>'
+  }
+}
+render();
+</script>
+</body>
+</html>
